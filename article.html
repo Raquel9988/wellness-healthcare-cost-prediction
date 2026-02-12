@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -23,12 +27,27 @@
 
         nav {
             background-color: #f3f0fa;
-            padding: 15px 20px;
-            text-align: center;
+            padding: 30px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        nav h2 {
+            color: #5b2d91;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 10px 0;
         }
 
         nav a {
-            margin: 0 12px;
             text-decoration: none;
             color: #5b2d91;
             font-weight: bold;
@@ -41,11 +60,11 @@
         main {
             max-width: 1000px;
             margin: auto;
-            padding: 70px 25px;
+            padding: 60px 25px;
         }
 
         section {
-            margin-bottom: 100px;
+            margin-bottom: 90px;
         }
 
         h2 {
@@ -86,14 +105,21 @@
 </header>
 
 <nav>
-    <a href="#phase1">Phase I</a>
-    <a href="#phase2">Phase II</a>
-    <a href="#phase3">Phase III</a>
-    <a href="#phase4">Phase IV</a>
-    <a href="#phase5">Phase V</a>
-    <a href="#phase6">Phase VI</a>
-    <a href="#phase7">Phase VII</a>
-    <a href="#phase8">Phase VIII</a>
+    <h2>Contents</h2>
+    <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#introduction">1. Introduction</a></li>
+        <li><a href="#eda">2. Exploratory Data Analysis</a></li>
+        <li><a href="#model">3. Baseline Regression</a></li>
+        <li><a href="#nonlinear">4. Nonlinear Age Effects</a></li>
+        <li><a href="#interactions">5. Interaction Effects</a></li>
+        <li><a href="#evaluation">6. Diagnostics & Evaluation</a></li>
+        <li><a href="#risk">7. Relative Burden</a></li>
+        <li><a href="#ml">8. Machine Learning Benchmark</a></li>
+        <li><a href="#conclusion">9. Conclusion</a></li>
+        <li><a href="#limitations">10. Limitations</a></li>
+        <li><a href="#future">11. Future Research</a></li>
+    </ul>
 </nav>
 <main>
 
@@ -224,7 +250,10 @@
     </p>
 
     <figure>
-        <img src="figures/04_correlation_heatmap.png" alt="Correlation Matrix">
+        <img src="figures/figure4_correlation_heatmap.png"
+     alt="Correlation Matrix of Numeric Features"
+     style="max-width: 100%; height: auto;">
+
         <figcaption>Figure 4: Correlation Matrix</figcaption>
     </figure>
 
@@ -266,7 +295,8 @@
     </p>
 </section>
 
-<section>
+<section id="nonlinear">
+
     <h2>4. Nonlinear Age Effects and Life-Course Functional Trajectories</h2>
 
     <p>
@@ -284,7 +314,9 @@
     </p>
 </section>
 
-<section>
+<section id="interactions">
+
+
     <h2>5. Interaction Effects: Compounding Behavioural and Physiological Strain</h2>
 
     <p>
@@ -475,3 +507,11 @@
 
 
 </main>
+
+<footer>
+    <p>© 2026 Raquel | OT-Informed Data Science Portfolio</p>
+</footer>
+
+</body>
+</html>
+
