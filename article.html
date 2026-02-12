@@ -126,50 +126,45 @@
 <section id="abstract">
     <h2>Abstract</h2>
 
-    <p>
-        This study investigates the relationship between demographic and behavioural
-        risk factors and healthcare insurance expenditure using interpretable
-        regression modelling and structured model evaluation. Healthcare cost is
-        reframed as a proportional indicator of cumulative physiological strain and
-        functional burden rather than as an isolated financial outcome.
-    </p>
+  <p>
+    This study looks at how demographic and behavioural risk factors relate to healthcare insurance costs
+    using clear and interpretable regression models. Instead of viewing healthcare cost purely as money spent,
+    it is treated as an indicator of accumulated physical strain and overall functional burden on the body.
+  </p>
 
-    
+  <p>
+    During the exploratory analysis, healthcare costs were found to be heavily right-skewed — meaning most people
+    have lower costs, while a smaller group has very high expenses. Because of this, a log transformation was applied.
+    This helped stabilise variation in the data and allowed the results to be interpreted in proportional (percentage)
+    terms rather than absolute amounts.
+  </p>
 
-    <p>
-        Exploratory analysis revealed substantial right-skewness in raw expenditure,
-        motivating log-transformation to stabilise variance and enable proportional
-        interpretation. A baseline multiple linear regression model explained
-        approximately 76% of variance in log-transformed healthcare costs.
-        Incorporating nonlinear age terms and interaction effects between smoking
-        and BMI improved explanatory power to approximately 82%, indicating
-        compounding behavioural–physiological risk patterns.
-    </p>
+  <p>
+    The initial regression model explained about 76% of the variation in log-transformed healthcare costs.
+    When nonlinear age effects and interaction terms between smoking and BMI were added, the model improved and
+    explained about 82% of the variation. This suggests that risk factors do not simply add up in a straight line —
+    they can combine and amplify each other.
+  </p>
 
-    <p>
-        Smoking status was associated with approximately 88% higher expected
-        healthcare expenditure, holding other variables constant, while age
-        contributed approximately 3.5% incremental burden per year and BMI
-        contributed approximately 2% per unit increase. Interaction terms
-        demonstrated amplification of metabolic strain among smokers.
-    </p>
+  <p>
+    Smoking was associated with approximately 88% higher expected healthcare costs, even when controlling for age,
+    BMI, and sex. Each additional year of age was linked to about a 3.5% increase in expected cost, and each one-unit
+    increase in BMI was linked to about a 2% increase. The interaction terms showed that higher BMI has an even stronger
+    impact among smokers, indicating compounded physiological strain.
+  </p>
 
-    <p>
-        Predicted values were subsequently reframed as relative burden ratios
-        centred around the population median to enhance interpretability across
-        healthcare systems. A Random Forest benchmark produced only marginal
-        performance gains, supporting the adequacy and transparency of structured
-        regression modelling.
-    </p>
+  <p>
+    To improve interpretability, predicted costs were reframed as relative burden ratios centred around the population median.
+    This makes it easier to compare individuals in a way that is meaningful across different healthcare systems.
+    A Random Forest model was also tested, but it showed only small improvements in predictive performance. This supports
+    the use of structured regression modelling, which offers strong explanatory power while remaining transparent and interpretable.
+  </p>
 
-    <p>
-        From an Occupational Therapy perspective, healthcare expenditure
-        functions as a downstream indicator of participation restriction,
-        endurance limitation, and sustained adaptive load. The findings
-        support the use of interpretable predictive modelling to inform
-        preventative intervention strategies while maintaining ethical
-        responsibility and transparency.
-    </p>
+  <p>
+    From an Occupational Therapy perspective, healthcare expenditure can be understood as a downstream signal of participation
+    limitation, reduced endurance capacity, and long-term adaptive demand. These findings highlight how interpretable predictive
+    modelling can support early prevention strategies while maintaining clarity, fairness, and ethical responsibility.
+  </p>
 </section>
 
 
