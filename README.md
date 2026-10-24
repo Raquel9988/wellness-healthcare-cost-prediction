@@ -52,3 +52,8 @@ Model outputs will be interpreted though and occupational therapy lens, focusing
 
 ## Project Status
 Weel1: Problem definition and project setup 
+
+
+## Revised research report
+
+Read `article.html` for the revised student written research report with a more independent Occupational Therapy interpretation. The original notebook, figures, and computational outputs have been retained. The notebook generated `reports/full-report.html` remains unchanged as a record of the original analysis.

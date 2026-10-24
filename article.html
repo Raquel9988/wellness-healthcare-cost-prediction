@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Healthcare Cost Prediction | OT-Informed Analytical Study</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
+<meta charset="utf-8"/>
+<title>Healthcare Cost Prediction | OT-Informed Analytical Study</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
         html {
             scroll-behavior: smooth;
         }
@@ -96,183 +96,135 @@
         }
     </style>
 </head>
-
 <body>
-
 <header>
-    <h1>Healthcare Cost Prediction: A Structured, OT-Informed Modelling Study</h1>
-    <p>Interpretable Regression, Nonlinear Risk Accumulation & Ethical Predictive Framing</p>
+<h1>Healthcare Cost Prediction: A Structured, OT-Informed Modelling Study</h1>
+<p>Interpretable Regression, Nonlinear Risk Accumulation &amp; Ethical Predictive Framing</p>
 </header>
-
 <nav>
-    <h2>Contents</h2>
-    <ul>
-        <li><a href="#abstract">Abstract</a></li>
-        <li><a href="#introduction">1. Introduction</a></li>
-        <li><a href="#eda">2. Exploratory Data Analysis</a></li>
-        <li><a href="#model">3. Baseline Regression</a></li>
-        <li><a href="#nonlinear">4. Nonlinear Age Effects</a></li>
-        <li><a href="#interactions">5. Interaction Effects</a></li>
-        <li><a href="#evaluation">6. Diagnostics & Evaluation</a></li>
-        <li><a href="#risk">7. Relative Burden</a></li>
-        <li><a href="#ml">8. Machine Learning Benchmark</a></li>
-        <li><a href="#conclusion">9. Conclusion</a></li>
-        <li><a href="#limitations">10. Limitations</a></li>
-        <li><a href="#future">11. Future Research</a></li>
-    </ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#eda">2. Exploratory Data Analysis</a></li>
+<li><a href="#model">3. Baseline Regression</a></li>
+<li><a href="#nonlinear">4. Nonlinear Age Effects</a></li>
+<li><a href="#interactions">5. Interaction Effects</a></li>
+<li><a href="#evaluation">6. Diagnostics &amp; Evaluation</a></li>
+<li><a href="#risk">7. Relative Burden</a></li>
+<li><a href="#ml">8. Machine Learning Benchmark</a></li>
+<li><a href="#conclusion">9. Conclusion</a></li>
+<li><a href="#limitations">10. Limitations</a></li>
+<li><a href="#future">11. Future Research</a></li>
+</ul>
 </nav>
 <main>
-
 <section id="abstract">
-    <h2>Abstract</h2>
-
-  <p>
-    This study looks at how demographic and behavioural risk factors relate to healthcare insurance costs
-    using clear and interpretable regression models. Instead of viewing healthcare cost purely as money spent,
-    it is treated as an indicator of accumulated physical strain and overall functional burden on the body.
-  </p>
-
-  <p>
+<h2>Abstract</h2>
+<p>This study investigates how age, body mass index (BMI), smoking and other recorded characteristics relate to healthcare insurance charges. I used exploratory analysis, regression and a Random Forest model to examine these relationships. I also considered what the findings might mean from an Occupational Therapy perspective, particularly for prevention, health management and participation in daily activities. Insurance charges are not a direct measure of occupational performance, so the OT interpretation is presented as a possible application rather than a finding measured by the dataset.</p>
+<p>
     During the exploratory analysis, healthcare costs were found to be heavily right-skewed. This means most people
     have lower costs, while a smaller group has very high expenses. Because of this, a log transformation was applied.
     This helped stabilise variation in the data and allowed the results to be interpreted in proportional (percentage)
     terms rather than absolute amounts.
   </p>
-
-  <p>
+<p>
     The initial regression model explained about 76% of the variation in log-transformed healthcare costs.
     When nonlinear age effects and interaction terms between smoking and BMI were added, the model improved and
     explained about 82% of the variation. This suggests that risk factors do not simply add up in a straight line, they can combine and amplify each other.
   </p>
-
-  <p>
+<p>
     Smoking was associated with approximately 88% higher expected healthcare costs, even when controlling for age,
     BMI, and sex. Each additional year of age was linked to about a 3.5% increase in expected cost, and each one-unit
     increase in BMI was linked to about a 2% increase. The interaction terms showed that higher BMI has an even stronger
     impact among smokers, indicating compounded physiological strain.
   </p>
-
-  <p>
+<p>
     To improve interpretability, predicted costs were reframed as relative burden ratios centred around the population median.
     This makes it easier to compare individuals in a way that is meaningful across different healthcare systems.
     A Random Forest model was also tested, but it showed only small improvements in predictive performance. This supports
     the use of structured regression modelling, which offers strong explanatory power while remaining transparent and interpretable.
   </p>
-
-  <p>
+<p>
     From an Occupational Therapy perspective, healthcare expenditure can be understood as a downstream signal of participation
     limitation, reduced endurance capacity, and long-term adaptive demand. These findings highlight how interpretable predictive
     modelling can support early prevention strategies while maintaining clarity, fairness, and ethical responsibility.
   </p>
 </section>
-
-
 <section id="introduction">
-    <h2>1. Introduction: Healthcare Cost as a Marker of Occupational Strain</h2>
-
-    <p>
-        Healthcare expenditure is frequently analysed as a financial endpoint. 
-        In this study, cost is conceptualised as a measurable downstream indicator 
-        of cumulative physiological strain and participation restriction. 
-        Rather than identifying individuals who “cost more,” 
-        the analytical objective is to examine how behavioural and demographic 
-        exposures compound over time to increase long-term burden.
-    </p>
-
-    <p>
-        From an Occupational Therapy (OT) perspective, healthcare cost is not merely 
-        the result of discrete medical events. It reflects progressive erosion 
-        of occupational endurance, increasing environmental adaptation demands, 
-        chronic self-management load, and narrowing participation capacity. 
-        Rising expenditure signals strain in the dynamic interaction between 
-        person, environment, and occupation.
-    </p>
-
-    <p>
-        Within the Person–Environment–Occupation (PEO) framework, health behaviours 
+<h2>1. Introduction</h2>
+<p>Healthcare costs are often studied to understand which factors are associated with higher spending. I wanted to look at the same question while also considering its relevance to Occupational Therapy. In practice, people manage their health alongside work, family responsibilities, self care and other daily activities. Factors linked to greater healthcare needs may therefore be useful when thinking about prevention and support, although costs alone cannot tell us whether someone is struggling with everyday occupations.</p>
+<p>An OT perspective adds an important distinction to this analysis. A person may have high medical expenses but still participate fully in meaningful activities. Another person may have low expenses because they cannot access care, despite experiencing major difficulties at home or work. For this reason, I have interpreted the cost patterns cautiously and have not treated them as direct evidence of disability or reduced occupational participation.</p>
+<p>
+        Within the Person to Environment to Occupation (PEO) framework, health behaviours 
         such as smoking interact with physiological variables such as BMI and age 
         to influence occupational performance. The statistical modelling approach 
         therefore serves as a quantitative lens through which these interactions 
         can be formally evaluated.
     </p>
 </section>
-
 <section id="eda">
-    <h2>2. Distributional Structure and Occupational Burden</h2>
-
-    <p>
-        Raw healthcare charges demonstrated substantial right skewness.
-    </p>
-
-    <figure>
-        <img src="figures/01_charges_histogram.png" alt="Raw Charges">
-        <figcaption>Figure 1: Raw Healthcare Charges Distribution</figcaption>
-    </figure>
-
-    <p>
+<h2>2. Distributional Structure and Occupational Burden</h2>
+<p>The distribution of healthcare charges was strongly skewed to the right. Most observations were concentrated at lower charge values, while a smaller number had much higher charges. This matters because a few large values can have a strong influence on models fitted to the original cost scale.</p>
+<figure>
+<img alt="Raw Charges" src="figures/01_charges_histogram.png"/>
+<figcaption>Figure 1: Raw Healthcare Charges Distribution</figcaption>
+</figure>
+<p>
         The histogram shows that the majority of individuals cluster within the lower to moderate
         cost range, while a small subset extends far into the higher-cost region.
         This long right tail indicates that extreme healthcare expenses are relatively rare,
         but when they do occur, they are substantially larger than the typical annual expenditure.
     </p>
-
-    <p>
+<p>
         In practical terms, most individuals incur predictable, manageable healthcare costs.
         However, a minority experience very high expenditures, which likely reflect chronic illness,
         complications, multimorbidity, or sustained medical intervention.
-        The distribution is therefore not symmetrical — healthcare cost burden is unevenly distributed.
+        The distribution is therefore not symmetrical ,  healthcare cost burden is unevenly distributed.
     </p>
-
-    <p>
+<p>
         From a statistical perspective, this level of skewness violates key linear regression
         assumptions such as normally distributed residuals and constant variance.
         Without transformation, high-cost outliers would dominate model estimation,
         leading to unstable coefficients and distorted interpretation.
     </p>
-
-    <p>
+<p>
         From an Occupational Therapy (OT) perspective, the skewness reflects unequal distribution
         of functional strain across the population. The right tail likely represents individuals
-        experiencing cumulative occupational disruption — including reduced work participation,
+        experiencing cumulative occupational disruption ,  including reduced work participation,
         increased dependency in daily activities, chronic fatigue, pain, and long-term health
         management demands.
     </p>
-
-    <p>
+<p>
         High healthcare expenditure in this context can be interpreted as a downstream indicator
         of sustained occupational imbalance. Rather than isolated medical events, these costs
         likely represent prolonged periods of reduced functional capacity and participation
         restriction. The distribution therefore reflects not just financial inequality,
         but inequality in functional health burden.
     </p>
-
-    <p>
+<p>
         Log transformation was applied to stabilise variance and reduce the dominance
-        of extreme values. This transformation enables proportional interpretation —
+        of extreme values. This transformation enables proportional interpretation , 
         allowing the model to estimate relative percentage changes in healthcare cost
         rather than absolute differences, which is more appropriate given the multiplicative
         nature of chronic risk accumulation.
     </p>
-
-    <figure>
-    <img src="figures/02_log_charges_histogram.png" alt="Log Charges">
-    <figcaption>Figure 2: Log-Transformed Healthcare Charges</figcaption>
+<figure>
+<img alt="Log Charges" src="figures/02_log_charges_histogram.png"/>
+<figcaption>Figure 2: Log-Transformed Healthcare Charges</figcaption>
 </figure>
-
 <p>
     After log transformation, the distribution becomes substantially more symmetric.
     The extreme right tail visible in Figure 1 is compressed, and the majority of
     observations now cluster around a central range with more balanced spread
     on both sides.
 </p>
-
 <p>
     This indicates that the large differences between low-cost and high-cost individuals
     are no longer dominating the visual structure of the data. Instead of a few extreme
     cases stretching the scale, the transformed distribution reveals clearer
     proportional variation across the entire population.
 </p>
-
 <p>
     Statistically, this matters because linear regression assumes normally distributed
     residuals and relatively constant variance. The log transformation reduces
@@ -280,52 +232,44 @@
     from exerting disproportionate influence on model estimation. As a result,
     coefficient estimates become more stable, interpretable, and reliable.
 </p>
-
 <p>
-    Importantly, modelling log(charges) shifts interpretation from absolute
+    modelling log(charges) shifts interpretation from absolute
     cost differences to percentage differences. This is conceptually appropriate
     in healthcare economics, where risk factors such as smoking, obesity,
     or ageing tend to increase costs proportionally rather than by a fixed
     additive amount.
 </p>
-
 <p>
     From an Occupational Therapy perspective, the transformation reflects
     the compounding nature of functional burden. Health stressors rarely act
-    in isolation. Instead, they interact over time — reduced mobility may
+    in isolation. Instead, they interact over time ,  reduced mobility may
     limit work participation, which may reduce physical conditioning,
     which may increase metabolic risk, further amplifying health strain.
 </p>
-
 <p>
     The more symmetric log distribution therefore mirrors the idea that
     vulnerability accumulates multiplicatively. Each additional risk factor
     increases the *rate* of burden accumulation rather than simply adding
     a fixed unit of cost. In this way, the transformation does not merely
-    improve statistical modelling — it aligns the analytical framework
+    improve statistical modelling ,  it aligns the analytical framework
     with a clinically realistic representation of chronic health trajectories.
 </p>
-
-
 <figure>
-    <img src="figures/03_smoker_boxplot.png" alt="Smoking vs Charges">
-    <figcaption>Figure 3: Smoking Status and Healthcare Costs</figcaption>
+<img alt="Smoking vs Charges" src="figures/03_smoker_boxplot.png"/>
+<figcaption>Figure 3: Smoking Status and Healthcare Costs</figcaption>
 </figure>
-
 <p>
     The boxplot clearly demonstrates that individuals who smoke exhibit
     a substantially higher median healthcare expenditure compared to
     non-smokers. The median line for smokers is visibly elevated,
     indicating that even the “typical” smoker incurs greater annual cost.
 </p>
-
 <p>
     In addition to a higher median, smokers display a wider interquartile range
     and more extreme upper outliers. This indicates increased variability in cost,
     suggesting that healthcare expenditure among smokers is not only higher on
     average but also less predictable.
 </p>
-
 <p>
     The longer upper whiskers and concentration of high-value outliers among
     smokers imply the presence of acute complications layered on top of
@@ -333,22 +277,19 @@
     tighter, lower-cost band, smokers demonstrate greater dispersion and
     more frequent extreme expenditure events.
 </p>
-
 <p>
     From a statistical standpoint, this confirms smoking status as a strong
     candidate predictor variable. The consistent upward shift in central tendency,
     combined with increased spread, suggests both elevated baseline cost
     and heightened risk of catastrophic expenditure.
 </p>
-
 <p>
     From an Occupational Therapy perspective, this pattern likely reflects
     dual-layered burden. First, smoking contributes to chronic physiological
-    compromise — reduced cardiopulmonary endurance, delayed recovery,
-    and heightened systemic inflammation — which may increase ongoing
+    compromise ,  reduced cardiopulmonary endurance, delayed recovery,
+    and heightened systemic inflammation ,  which may increase ongoing
     healthcare utilisation.
 </p>
-
 <p>
     Second, the increased variability suggests episodic exacerbations:
     acute respiratory events, cardiovascular incidents, or infection-related
@@ -356,42 +297,35 @@
     reduce work stability, limit engagement in meaningful activities,
     and increase dependency in activities of daily living.
 </p>
-
 <p>
     The combination of elevated median cost and greater dispersion therefore
     reflects not only increased financial strain but instability in health
     participation patterns. Smoking appears associated with both sustained
-    functional burden and unpredictable participation disruption — a pattern
+    functional burden and unpredictable participation disruption ,  a pattern
     consistent with chronic-compounding risk trajectories.
 </p>
 <figure>
-    <img src="figures/figure4_correlation_heatmap.png"
-         alt="Correlation Matrix of Numeric Features"
-         style="max-width: 100%; height: auto;">
-    <figcaption>Figure 4: Correlation Matrix</figcaption>
+<img alt="Correlation Matrix of Numeric Features" src="figures/figure4_correlation_heatmap.png" style="max-width: 100%; height: auto;"/>
+<figcaption>Figure 4: Correlation Matrix</figcaption>
 </figure>
-
 <p>
     The correlation heatmap displays pairwise linear relationships between
     numeric variables in the dataset. Darker shading represents stronger
     positive or negative associations, while lighter shading indicates weak
     or negligible relationships.
 </p>
-
 <p>
     Healthcare charges show positive correlation with age and BMI,
     indicating that as age increases and as body mass index increases,
     healthcare expenditure tends to rise. These relationships are moderate
     rather than extreme, suggesting meaningful but not deterministic influence.
 </p>
-
 <p>
-    Importantly, age and BMI are not perfectly correlated with one another,
+    age and BMI are not perfectly correlated with one another,
     meaning they contribute distinct explanatory information rather than
     duplicating the same risk signal. This supports their inclusion as
     independent predictors in regression modelling.
 </p>
-
 <p>
     From a modelling standpoint, correlation analysis serves two purposes:
     identifying candidate predictors and detecting multicollinearity.
@@ -399,7 +333,6 @@
     suggests that the model can estimate their individual effects
     without severe instability or redundancy.
 </p>
-
 <p>
     From an Occupational Therapy perspective, the associations are clinically coherent.
     Age reflects cumulative exposure to physiological wear, chronic condition risk,
@@ -407,7 +340,6 @@
     endurance, and adaptive resilience may gradually decline, increasing
     healthcare utilisation.
 </p>
-
 <p>
     BMI acts as a proxy for metabolic load and biomechanical strain.
     Elevated BMI may reduce cardiometabolic efficiency, increase joint stress,
@@ -416,94 +348,72 @@
     increase vulnerability to chronic disease, and elevate long-term
     healthcare expenditure.
 </p>
-
 <p>
     The correlation structure therefore reinforces the interpretation of
     healthcare cost as a downstream reflection of cumulative functional burden.
-    Age and BMI are not merely demographic descriptors —
+    Age and BMI are not merely demographic descriptors , 
     they are structural indicators of sustained physiological load
     and participation capacity across the lifespan.
 </p>
 </section>
 <section id="model">
-    <h2>3. Baseline Regression and Quantification of Occupational Strain</h2>
-
-    <p>
-        The baseline log-linear regression model explained approximately
-        76% of the variance in log-transformed healthcare cost (R² ≈ 0.76).
-        This indicates that the included predictors — age, BMI, smoking,
-        and other covariates — collectively account for a substantial
-        proportion of systematic cost variation within the population.
-    </p>
-
-    <p>
-        An R² of this magnitude suggests that healthcare expenditure is not
-        random or purely stochastic. Instead, it follows identifiable structural
-        risk patterns that can be quantified and interpreted.
-    </p>
-
-    <p>
+<h2>3. Baseline Regression and Quantification of Occupational Strain</h2>
+<p>The baseline regression explained about 76% of the variation in log healthcare charges (R² approximately 0.76). This suggests that the variables included in the model are useful for explaining differences in recorded charges within this dataset. It does not mean the model explains 76% of a person's health or daily functioning.</p>
+<p>I see this as a useful starting point rather than a complete explanation. Age, BMI and smoking can help identify statistical patterns, but an OT assessment would also need to consider the person's routines, roles, physical abilities, environment and access to support.</p>
+<p>
         Because the dependent variable is log(charges), regression coefficients
         represent proportional (percentage) changes rather than absolute
         currency differences. This allows interpretation in terms of relative
         risk amplification rather than fixed cost increments.
     </p>
-
-    <p>
+<p>
         Age (β ≈ 0.034) implies approximately a 3.5% increase in expected
         healthcare expenditure for each additional year of life.
         While 3.5% may appear modest annually, the effect compounds
         multiplicatively across time. Over 20 years, this corresponds to
         approximately a doubling of expected healthcare cost.
     </p>
-
-    <p>
+<p>
         Statistically, this reflects cumulative exposure to risk.
         Clinically, it reflects progressive endurance decline,
         reduced recovery capacity, and increased chronic disease prevalence
         across the lifespan.
     </p>
-
-    <p>
+<p>
         BMI (β ≈ 0.02) implies roughly a 2% increase in expected cost
         per additional BMI unit. A 10-unit increase in BMI corresponds
         to approximately a 22% increase in expected healthcare expenditure.
         This demonstrates that incremental metabolic and biomechanical strain,
         even when modest annually, accumulates meaningfully over time.
     </p>
-
-    <p>
+<p>
         From an Occupational Therapy perspective, BMI may act as a proxy
-        for sustained load on functional systems — including joint stress,
+        for sustained load on functional systems ,  including joint stress,
         cardiometabolic demand, and fatigue thresholds. Gradual increases
         in biomechanical strain may reduce sustained occupational capacity,
         leading to greater healthcare utilisation.
     </p>
-
-    <p>
+<p>
         Smoking (β ≈ 0.63) implies approximately an 88% higher expected
         healthcare cost relative to non-smokers. This represents a substantial
         risk amplification effect and emerges as one of the strongest predictors
         in the model.
     </p>
-
-    <p>
+<p>
         Unlike age, which reflects temporal accumulation, or BMI, which reflects
         metabolic load, smoking represents behavioural amplification of
         physiological stress. It accelerates inflammatory burden,
         impairs cardiopulmonary efficiency, and increases vulnerability
         to acute and chronic pathology.
     </p>
-
-    <p>
+<p>
         Within the Model of Human Occupation (MOHO), smoking can be interpreted
         as a volitional pattern embedded within habit systems. When sustained
         over time, this behavioural pattern interacts with performance capacity,
         progressively shaping long-term health trajectories and participation stability.
     </p>
-
-    <p>
-        Collectively, the model quantifies occupational strain as a
+<p>
+        Collectively, the model quantifies possible health related demands as a
         multiplicative process. Healthcare cost appears to reflect the
         compounded interaction between ageing, metabolic load,
         and behavioural risk. Rather than isolated drivers,
@@ -511,52 +421,31 @@
         functional burden across the lifespan.
     </p>
 </section>
-
-
 <section id="nonlinear">
-
-    <h2>4. Nonlinear Age Effects and Life-Course Functional Trajectories</h2>
-
-    <p>
-        Introducing a quadratic age term (age²) significantly improved
-        model fit, increasing adjusted R² to approximately 0.82.
-        This indicates that age does not influence healthcare cost
-        in a strictly linear manner. Instead, the relationship
-        follows a curved trajectory.
-    </p>
-
-    <p>
-        A quadratic term allows the model to capture acceleration
-        or deceleration effects across the lifespan. Rather than
-        assuming that each additional year increases cost by the
-        same percentage, the model now permits the rate of increase
-        itself to change with age.
-    </p>
-
-    <p>
+<h2>4. Nonlinear Age Effects and Life-Course Functional Trajectories</h2>
+<p>Adding age squared improved the adjusted R² to about 0.82. This suggests that the association between age and charges is not completely described by a straight line. The rate at which predicted charges change may differ across age groups.</p>
+<p>From an OT point of view, age by itself is not a measure of independence. Two people of the same age may have very different abilities, routines and support systems. The age pattern may help motivate further investigation, but the dataset cannot establish how occupational performance changes as an individual grows older.</p>
+<p>
         The estimated curvature suggests that healthcare expenditure
         escalates more rapidly during midlife, followed by a plateau
         at persistently elevated levels in later adulthood.
         This pattern implies that risk accumulation intensifies
         during a specific life phase before stabilising at a high baseline.
     </p>
-
-    <p>
+<p>
         Statistically, the improvement in adjusted R² confirms that
         the nonlinear specification captures meaningful structure
         rather than merely adding complexity. The model better reflects
         the true shape of cost progression across age groups.
     </p>
-
-    <p>
+<p>
         From a life-course perspective, this curvature aligns with
         the concept of cumulative risk exposure. During early adulthood,
         physiological reserve may buffer health stressors.
         However, as exposure accumulates, compensatory mechanisms
         become less efficient, leading to accelerated cost escalation.
     </p>
-
-    <p>
+<p>
         From an Occupational Therapy perspective, this pattern reflects
         narrowing adaptive reserve. Early functional strain may be absorbed
         through behavioural compensation, environmental modification,
@@ -564,56 +453,36 @@
         to biomechanical, metabolic, and psychosocial stress reduces
         occupational resilience.
     </p>
-
-    <p>
+<p>
         The plateau observed at later ages does not imply reduced burden.
         Rather, it may indicate sustained high-level healthcare utilisation,
         reflecting chronic condition management rather than rapid escalation.
         Functional capacity may stabilise at a constrained level,
         requiring ongoing support and medical monitoring.
     </p>
-
-    <p>
+<p>
         The nonlinear age effect therefore reframes healthcare cost
         as a dynamic trajectory rather than a steady incline.
         It suggests that midlife may represent a critical inflection point
         in functional decline and risk accumulation,
         reinforcing the importance of early preventative intervention.
     </p>
-
 </section>
 <section id="interactions">
-
-    <h2>5. Interaction Effects: Compounding Behavioural and Physiological Strain</h2>
-
-    <p>
-        Interaction terms allow the model to examine whether the effect of one variable
-        depends on the level of another variable. Rather than assuming that BMI and smoking
-        influence healthcare cost independently, the smoker × BMI term tests whether
-        biomechanical strain operates differently within behavioural risk contexts.
-    </p>
-
-    <p>
-        The smoker × BMI interaction (β ≈ 0.05) indicates that the marginal effect of BMI
-        increases by approximately 5% for smokers relative to non-smokers.
-        In a log-linear framework, this implies that each additional BMI unit
-        produces a stronger proportional increase in healthcare cost
-        among smokers than among non-smokers.
-    </p>
-
-    <p>
-        In practical terms, excess weight is more costly — and potentially more harmful —
+<h2>5. Interaction Effects</h2>
+<p>The interaction model examined whether the relationship between BMI and charges differed according to smoking status. The estimated smoking and BMI interaction coefficient was around 0.05 on the log scale. This points to a stronger association between BMI and predicted charges among smokers in the fitted model, although the exact percentage interpretation depends on the full model specification.</p>
+<p>For OT, this result supports looking at health behaviours together rather than treating each risk factor in isolation. In a clinical setting, I would still want to know what a person's daily routine looks like, what makes healthy choices difficult, and which changes are realistic for them. The interaction does not prove that smoking or BMI caused the higher charges.</p>
+<p>
+        In practical terms, excess weight is more costly ,  and potentially more harmful , 
         when layered on top of smoking-related physiological compromise.
         The combined effect is not merely additive; it is multiplicative.
     </p>
-
-    <p>
+<p>
         Statistically, this confirms that risk factors do not operate in isolation.
         Behavioural exposure modifies the strength of physiological predictors.
         The model therefore captures compounding strain rather than parallel effects.
     </p>
-
-    <p>
+<p>
         From a physiological perspective, smoking impairs oxygen delivery,
         increases systemic inflammation, and reduces tissue repair capacity.
         Elevated BMI adds metabolic load and biomechanical stress.
@@ -621,8 +490,7 @@
         and inflammatory burden may escalate disproportionately,
         amplifying healthcare utilisation.
     </p>
-
-    <p>
+<p>
         From an Occupational Therapy perspective, this interaction reflects
         layered occupational vulnerability. Smoking may reduce baseline
         endurance and adaptive capacity, while elevated BMI increases
@@ -630,163 +498,124 @@
         Together, these factors may narrow the threshold at which
         occupational engagement becomes unsustainable.
     </p>
-
-    <p>
+<p>
         Within the Kawa model metaphor, smoking introduces turbulence
-        into the river of life. Existing rocks — representing physiological
-        stressors such as metabolic strain — exert greater obstruction
+        into the river of life. Existing rocks ,  representing physiological
+        stressors such as metabolic strain ,  exert greater obstruction
         when the water flow is already destabilised.
         The interaction effect therefore symbolises amplified resistance
         within the life flow system, increasing the likelihood
         of participation disruption.
     </p>
-
-    <p>
+<p>
         The presence of a significant interaction term reframes healthcare
         expenditure as a systems-level phenomenon. Risk factors intersect,
         modify, and intensify one another. This supports an integrative
         clinical interpretation in which behavioural and physiological
         domains cannot be analysed in isolation.
     </p>
-
 </section>
-
 <section id="evaluation">
-    <h2>6. Model Diagnostics and Structural Validation</h2>
-
-    <p>
-        Model diagnostics were conducted to evaluate whether the statistical
-        assumptions underlying linear regression were reasonably satisfied.
-        These checks ensure that coefficient estimates are stable,
-        unbiased, and interpretable.
-    </p>
-
-    <p>
+<h2>6. Model Diagnostics and Structural Validation</h2>
+<p>I checked the regression residuals to see whether the fitted model was appropriate for the data. The plots suggested that using log charges helped reduce some of the uneven spread seen on the original scale. These checks are useful, but they do not guarantee that all regression assumptions are met or that predictions will be accurate for new populations.</p>
+<p>
         Residual analysis indicated approximate homoscedasticity,
         meaning that the variance of prediction errors remained
         relatively constant across levels of predicted cost.
         This suggests that the log transformation successfully
         stabilised variance and reduced distortion from extreme values.
     </p>
-
-    <p>
-        The Durbin–Watson statistic approximated 2,
+<p>
+        The Durbin to Watson statistic approximated 2,
         indicating absence of autocorrelation in residuals.
         In practical terms, prediction errors did not follow
         systematic patterns or sequential dependency.
         This supports the assumption of independent errors.
     </p>
-
-    <p>
+<p>
         Condition number analysis indicated acceptable multicollinearity levels.
         This implies that predictors were not excessively correlated
         with one another, allowing the model to estimate individual
         effects without severe numerical instability.
     </p>
-
-    <figure>
-        <img src="figures/05_actual_vs_predicted.png" alt="Actual vs Predicted">
-        <figcaption>Figure 5: Predicted vs Actual Log Charges</figcaption>
-    </figure>
-
-    <p>
+<figure>
+<img alt="Actual vs Predicted" src="figures/05_actual_vs_predicted.png"/>
+<figcaption>Figure 5: Predicted vs Actual Log Charges</figcaption>
+</figure>
+<p>
         The predicted versus actual plot demonstrates strong alignment
         along the 45-degree reference line. Observations cluster closely
         around this diagonal, indicating that the model captures
         the underlying structure of log-transformed healthcare cost
         with minimal systematic bias.
     </p>
-
-    <p>
-        While some dispersion remains — particularly at higher cost levels —
+<p>
+        While some dispersion remains ,  particularly at higher cost levels , 
         this pattern is expected in real-world healthcare data,
         where rare catastrophic events introduce unavoidable variability.
-        Importantly, no major nonlinear distortion or structural misfit
+        no major nonlinear distortion or structural misfit
         is visually evident.
     </p>
-
-    <p>
+<p>
         Collectively, these diagnostics suggest that cumulative burden
         is structurally captured by the nonlinear interaction model.
-        The model does not merely fit the sample — it reflects
+        The model does not merely fit the sample ,  it reflects
         coherent underlying relationships between age,
         metabolic load, behavioural exposure, and healthcare expenditure.
     </p>
-
-    <p>
+<p>
         From an Occupational Therapy perspective, the structural validation
         supports the interpretation that healthcare cost is not random noise.
         Instead, it follows identifiable life-course and behavioural trajectories.
         The model therefore provides quantitative confirmation
-        of cumulative occupational strain processes that are
+        of cumulative possible health related demands processes that are
         clinically observable but rarely formally measured.
     </p>
-
 </section>
 <section id="risk">
-    <h2>7. Relative Burden as Early Occupational Risk Indicator</h2>
-
-    <p>
-        Predicted values from the nonlinear interaction model were reframed
-        relative to the median healthcare cost. Rather than interpreting
-        predictions in absolute currency terms, each individual’s expected
-        expenditure was expressed as a multiple of the population median.
-    </p>
-
-    <p>
-        This transformation enables clearer risk stratification.
-        A value of 1.0 represents median expected burden,
-        values above 1.0 indicate elevated relative strain,
-        and values below 1.0 indicate comparatively lower burden.
-    </p>
-
-    <figure>
-        <img src="figures/06_relative_burden_histogram.png" alt="Relative Burden">
-        <figcaption>Figure 6: Relative Burden Distribution</figcaption>
-    </figure>
-
-    <p>
+<h2>7. Relative Burden as Early Occupational Risk Indicator</h2>
+<p>I compared model predictions with the median charge to make the predicted amounts easier to interpret. A ratio of 1 represents the median reference value, while a ratio above 1 indicates a higher predicted charge relative to that reference. This is a measure of relative predicted cost, not a validated clinical risk score.</p>
+<p>I would not use this ratio to decide whether someone needs Occupational Therapy. A person with a low predicted charge might still have significant difficulty with bathing, work, mobility or managing daily tasks. If the aim is to identify people who need support, measures of function and participation should be collected directly.</p>
+<figure>
+<img alt="Relative Burden" src="figures/06_relative_burden_histogram.png"/>
+<figcaption>Figure 6: Relative Burden Distribution</figcaption>
+</figure>
+<p>
         The histogram of relative burden demonstrates that the majority
         of individuals cluster around the median reference point.
         However, a meaningful proportion extends into higher multiples,
         forming a right-skewed tail of elevated relative strain.
     </p>
-
-    <p>
+<p>
         This indicates that while most individuals exhibit predictable
         healthcare utilisation, a subset experiences disproportionately
         high expected burden relative to the population norm.
         The distribution highlights inequality not only in absolute cost,
         but in relative systemic strain.
     </p>
-
-    <figure>
-        <img src="figures/07_relative_burden_by_smoking.png" alt="Relative Burden by Smoking">
-        <figcaption>Figure 7: Relative Burden by Smoking Status</figcaption>
-    </figure>
-
-    <p>
+<figure>
+<img alt="Relative Burden by Smoking" src="figures/07_relative_burden_by_smoking.png"/>
+<figcaption>Figure 7: Relative Burden by Smoking Status</figcaption>
+</figure>
+<p>
         When stratified by smoking status, the entire relative burden
         distribution for smokers shifts upward. This suggests systemic
         amplification rather than isolated high-cost cases.
-        Smoking does not merely increase the extreme tail —
+        Smoking does not merely increase the extreme tail , 
         it elevates baseline risk across the distribution.
     </p>
-
-    <p>
+<p>
         Statistically, this confirms that smoking functions as a structural
         risk modifier. The upward shift indicates a broad-based increase
         in expected cost rather than rare catastrophic events alone.
     </p>
-
-    <p>
+<p>
         From an Occupational Therapy perspective, relative burden functions
         as a population-level screening proxy. Individuals with elevated
         relative burden may not yet present with overt functional collapse,
         but may already be experiencing cumulative participation strain.
     </p>
-
-    <p>
+<p>
         Elevated relative burden may reflect emerging endurance decline,
         reduced occupational balance, increasing fatigue,
         or early-stage chronic condition management.
@@ -794,8 +623,7 @@
         participation restriction rather than a late-stage marker
         of crisis intervention.
     </p>
-
-    <p>
+<p>
         Reframing model output in relative terms therefore transforms
         predictive analytics into preventative insight.
         Rather than reacting to catastrophic expenditure,
@@ -804,100 +632,66 @@
         occupational engagement and functional resilience.
     </p>
 </section>
-
 <section id="ml">
-    <h2>8. Machine Learning Benchmark and Interpretability</h2>
-
-    <p>
-        As a comparative benchmark, a Random Forest regression model
-        was implemented to assess whether nonlinear tree-based learning
-        could substantially outperform the structured regression framework.
-    </p>
-
-    <p>
+<h2>8. Machine Learning Benchmark and Interpretability</h2>
+<p>I included a Random Forest model to compare a more flexible prediction method with the regression approach. Random Forest can capture nonlinear patterns without specifying each relationship in advance. I compared the approaches because prediction accuracy and the ability to explain a result are both important, especially when findings might be discussed in a healthcare context.</p>
+<p>
         Random Forest models capture complex nonlinear relationships
         and higher-order interactions automatically, without requiring
         manual specification of quadratic or interaction terms.
         They are particularly powerful when risk structures are irregular,
         discontinuous, or highly nonlinear.
     </p>
-
-    <p>
+<p>
         In this analysis, Random Forest modelling produced only marginal
         performance gains relative to the nonlinear interaction regression model.
         Improvements in R² and error metrics were minimal.
     </p>
-
-    <p>
+<p>
         This suggests that the dominant risk structure in healthcare expenditure
         is smooth, cumulative, and progressively compounding rather than chaotic
         or structurally fragmented. The regression model already captured
         the majority of meaningful variance through interpretable
         life-course and behavioural terms.
     </p>
-
-    <p>
+<p>
         The limited performance gap implies that healthcare cost drivers
-        follow coherent and explainable trajectories — such as ageing,
-        metabolic load, and behavioural amplification — rather than
+        follow coherent and explainable trajectories ,  such as ageing,
+        metabolic load, and behavioural amplification ,  rather than
         unpredictable threshold effects.
     </p>
-
-    <p>
+<p>
         In healthcare contexts, interpretability is ethically essential.
         Predictive models influence insurance premiums, intervention eligibility,
         and preventative resource allocation. Black-box predictions without
         transparent reasoning may undermine clinical trust and policy fairness.
     </p>
-
-    <p>
+<p>
         Transparent regression modelling supports clinical dialogue.
         Coefficients can be interpreted directly in terms of proportional risk,
         enabling meaningful discussion between analysts, clinicians,
         and policy stakeholders.
     </p>
-
-    <p>
+<p>
         From an Occupational Therapy perspective, interpretability allows
         risk to be contextualised within behavioural patterns,
         environmental influences, and participation trajectories.
         Rather than merely predicting cost, interpretable models
         illuminate modifiable pathways for preventative intervention.
     </p>
-
-    <p>
+<p>
         The machine learning benchmark therefore serves not as a replacement,
         but as structural validation. The small performance difference
         reinforces the conclusion that healthcare burden accumulates
-        in a systematic and clinically coherent manner —
+        in a systematic and clinically coherent manner , 
         one that can be quantified transparently without sacrificing accuracy.
     </p>
-
 </section>
-
 <section id="conclusion">
-    <h2>9. Conclusion: Data Science in Service of Occupational Health</h2>
-
-    <p>
-        This analysis demonstrates that healthcare expenditure follows
-        identifiable structural patterns rather than random variation.
-        Age contributes approximately 3.5% annual proportional growth
-        in expected healthcare burden, compounding across the lifespan.
-        BMI introduces incremental metabolic and biomechanical strain,
-        accumulating gradually but meaningfully over time.
-        Smoking is associated with approximately 88% higher expected cost
-        and amplifies the impact of other physiological risk factors.
-    </p>
-
-    <p>
-        Importantly, these effects are not isolated. Nonlinear modelling
-        reveals life-course acceleration of burden, while interaction
-        effects confirm that behavioural exposure intensifies physiological strain.
-        Healthcare cost therefore emerges as a cumulative, multiplicative process
-        shaped by ageing, metabolic load, and behavioural patterns.
-    </p>
-
-    <p>
+<h2>9. Conclusion</h2>
+<p>The analysis found clear associations between healthcare charges and several recorded characteristics, particularly age, BMI and smoking. Allowing for a curved age relationship and interactions improved how the regression represented the data. These are associations within the available dataset and should not be interpreted as proof of causation.</p>
+<p>My main OT interpretation is that healthcare cost prediction could be useful as one piece of information when planning preventive services, but it cannot replace a person centred assessment. Occupational Therapy is concerned with what people need and want to do in their daily lives. To make these findings more meaningful for OT, I would want to know whether the people with higher predicted charges also experience difficulty with work, self care, leisure, fatigue management or maintaining healthy routines. Without that information, I can discuss possible implications, but I cannot conclude that higher charges mean poorer occupational performance.</p>
+<p>
         From an Occupational Therapy perspective, healthcare expenditure
         can be interpreted as a quantifiable manifestation of sustained
         adaptive load and participation strain. Elevated cost reflects
@@ -905,128 +699,83 @@
         reduced occupational balance, and increasing vulnerability
         to participation disruption.
     </p>
-
-    <p>
+<p>
         By reframing predictive outputs as relative burden indicators,
         modelling moves beyond retrospective cost analysis toward
         early risk identification. This enables proactive rather than reactive
-        health strategy — identifying individuals whose trajectories
+        health strategy ,  identifying individuals whose trajectories
         suggest emerging occupational instability before crisis-level expenditure occurs.
     </p>
-
-    <p>
+<p>
         When ethically framed and transparently communicated,
         predictive modelling can support preventative intervention,
         targeted health promotion, and long-term functional sustainability.
         Rather than replacing clinical reasoning, data science
-        can augment it — providing quantitative structure
+        can augment it ,  providing quantitative structure
         to life-course health trajectories that are already
         observable in practice.
     </p>
-
-    <p>
+<p>
         Ultimately, this project illustrates how interdisciplinary
-        integration — combining statistical modelling,
-        behavioural risk analysis, and occupational theory —
+        integration ,  combining statistical modelling,
+        behavioural risk analysis, and occupational theory , 
         can transform healthcare data into actionable insight.
         Data science, when aligned with human function and participation,
         becomes not merely a predictive tool,
         but a preventative framework in service of occupational health.
     </p>
 </section>
-
 <section id="limitations">
-    <h2>10. Limitations</h2>
-
-    <p>
-        Several limitations must be acknowledged in interpreting these findings.
-        First, the dataset reflects cross-sectional observations rather than longitudinal trajectories.
-        As a result, age-related effects are inferred from between-individual variation rather than
-        within-person change over time. True life-course burden accumulation would require
-        repeated measures data to capture dynamic progression.
-    </p>
-
-    <p>
-        Second, healthcare expenditure is an indirect proxy for functional burden. Healthcare expenditure represents a system-level 
-        utilisation response and may only partially capture the lived experience of occupational disruption and participation restriction.
-        While cost often correlates with disease severity and management intensity,
-        it does not directly measure participation restriction, occupational balance,
-        endurance limitation, or quality of life. From an Occupational Therapy perspective,
-        expenditure captures system response rather than lived experience.
-    </p>
-
-    <p>
+<h2>10. Limitations</h2>
+<p>The data are cross sectional, so the results describe differences between people rather than changes in the same people over time. This limits any claims about how health or costs develop across the lifespan.</p>
+<p>A second limitation is particularly important from an OT perspective: the dataset does not measure occupational participation, independence, quality of life, environmental barriers or access to rehabilitation. Insurance charges are influenced by many factors beyond health status, including access to services and how care is billed. I therefore cannot use these results to measure healthcare cost burden directly.</p>
+<p>
         Third, unobserved confounders such as socioeconomic status, access to care,
         environmental barriers, and psychosocial stressors were not included in the model.
         These variables may mediate or moderate the relationships identified here.
     </p>
-
-    <p>
+<p>
         Fourth, the use of a log-linear specification assumes proportional effects.
         While diagnostics supported model adequacy, real-world health processes may
         involve additional nonlinear thresholds not captured in this dataset.
     </p>
-
-    <p>
+<p>
         Additionally, findings may not generalise across healthcare systems with 
         substantially different reimbursement structures, insurance models, or access-to-care dynamics.
 </p>
-
-
-    <p>
+<p>
         Finally, predictive modelling in healthcare must be interpreted ethically.
         These findings should not be used to penalise individuals or restrict access to care.
         The appropriate application is preventative planning, population-level insight,
         and early identification of emerging burden patterns.
     </p>
 </section>
-
 <section id="future">
-    <h2>11. Future Research Directions</h2>
-
-    <p>
-        Future research should prioritise longitudinal data collection to examine
-        within-individual burden accumulation across time. Tracking functional status,
-        healthcare utilisation, and participation metrics concurrently would enable
-        direct testing of occupational strain models.
-    </p>
-
-    <p>
-        Incorporating psychosocial and environmental variables would allow
-        deeper integration of OT theoretical frameworks such as PEO and MOHO.
-        Variables capturing work demands, caregiving load, housing stability,
-        and access to rehabilitation services would strengthen explanatory depth.
-    </p>
-
-    <p>
+<h2>11. Future Research Directions</h2>
+<p>A useful next step would be to follow participants over time and collect information about both healthcare use and daily functioning. This would help test whether changes in predicted costs are actually related to changes in occupational participation.</p>
+<p>I would also include measures of self care, work participation, fatigue, physical function, health management routines and environmental support. Frameworks such as Person Environment Occupation (PEO) and the Model of Human Occupation (MOHO) could guide which variables to collect. These additions would make the analysis more relevant to OT practice instead of relying on cost as a substitute for functional outcomes.</p>
+<p>
         Methodologically, future studies could explore mixed-effects modelling,
         survival analysis for high-burden transitions, or causal inference techniques
         to distinguish correlation from directional influence.
     </p>
-
-    <p>
+<p>
         From a healthcare systems perspective, relative burden modelling could be
         integrated into preventative screening frameworks. Individuals exhibiting
         accelerating proportional burden growth could be targeted for early
         occupational therapy intervention, lifestyle modification support,
         and environment-based adaptation planning.
     </p>
-
-    <p>
+<p>
         Finally, interdisciplinary collaboration between data scientists,
         occupational therapists, actuaries, and public health practitioners
         would allow predictive modelling to inform policy while maintaining
         ethical integrity and patient-centred focus.
     </p>
 </section>
-
-
 </main>
-
 <footer>
-    <p>© 2026 Raquel | OT-Informed Data Science Portfolio</p>
+<p>© 2026 Raquel | OT-Informed Data Science Portfolio</p>
 </footer>
-
 </body>
 </html>
-
